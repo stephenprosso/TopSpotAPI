@@ -11,35 +11,33 @@ using Newtonsoft.Json;
 namespace TopSpot.Controllers
 {
 
-
+	
 	public class TopSpotController : ApiController
 	{
+		private string JsonUrl = "C:\\Users\\Stephenprosso\\Documents\\Dev\\TopSpot\\TopSpots.json";
 		[HttpGet, Route("api/getTopSpot")]
 		public IHttpActionResult GetAllTopSpot()
 		{
-			string TopSpots = File.ReadAllText("C:\\Users\\Stephenprosso\\Documents\\Dev\\TopSpot\\TopSpots.json");
+			string TopSpots = File.ReadAllText(JsonUrl);
 
 			Models.TopSpot[] topSpotsArray = JsonConvert.DeserializeObject<Models.TopSpot[]>(TopSpots);
 
 			return Ok(topSpotsArray);
 		}
-		[HttpPost]
 
+		[HttpPost, Route("api/getTopSpot")]
 		public IHttpActionResult PostTopSpot(Models.TopSpot topSpot)
 		{
-			string TopSpotsFile = File.ReadAllText("C:\\Users\\Stephenprosso\\Documents\\Dev\\TopSpot\\TopSpots.json");
+			string TopSpotsFile = File.ReadAllText(JsonUrl);
 
-			Models.TopSpot[] topSpotsArray = JsonConvert.DeserializeObject<Models.TopSpot[]>(TopSpotsFile);
+			List<Models.TopSpot> topSpotsList = JsonConvert.DeserializeObject<List<Models.TopSpot>>(TopSpotsFile);
+			topSpotsList.Add(topSpot);
+			
+			// reserialize the array
+			TopSpotsFile = JsonConvert.SerializeObject(topSpotsList);
+			File.WriteAllText(JsonUrl, TopSpotsFile);
 
-
-			TopSpotsFile = JsonConvert.SerializeObject(topSpotsArray);
-
-
-			// how to add top Spot to the topspots array
-
-			File.WriteAllText("C:\\Users\\Stephenprosso\\Documents\\Dev\\TopSpot\\TopSpots.json", TopSpotsFile);
-
-			return Ok();
+			return Ok(topSpotsList);
 		}
 	}
 }
