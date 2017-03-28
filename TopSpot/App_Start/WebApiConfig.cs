@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using Newtonsoft.Json.Serialization;
 
 namespace TopSpot
 {
@@ -20,9 +22,10 @@ namespace TopSpot
                 defaults: new { id = RouteParameter.Optional }
             );
 			config.Formatters.Remove(config.Formatters.XmlFormatter);
-			config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+			 config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-			var policy = new EnableCorsAttribute("*", "*", "*",);
+			var policy = new EnableCorsAttribute("*", "*", "*");
+
 			config.EnableCors(policy);
 
 		}

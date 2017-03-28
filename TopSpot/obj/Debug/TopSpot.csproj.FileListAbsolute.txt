@@ -40,3 +40,6 @@ C:\Users\Stephenprosso\Documents\Dev\TopSpot\TopSpot\bin\System.Web.Http.WebHost
 C:\Users\Stephenprosso\Documents\Dev\TopSpot\TopSpot\obj\Debug\TopSpot.csprojResolveAssemblyReference.cache
 C:\Users\Stephenprosso\Documents\Dev\TopSpot\TopSpot\obj\Debug\TopSpot.dll
 C:\Users\Stephenprosso\Documents\Dev\TopSpot\TopSpot\obj\Debug\TopSpot.pdb
+C:\Users\Stephenprosso\Documents\Dev\TopSpot\TopSpot\bin\System.Web.Cors.dll
+C:\Users\Stephenprosso\Documents\Dev\TopSpot\TopSpot\bin\System.Web.Http.Cors.dll
+C:\Users\Stephenprosso\Documents\Dev\TopSpot\TopSpot\bin\System.Web.Http.Cors.xml
